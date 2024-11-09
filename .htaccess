@@ -1,0 +1,14 @@
+# Включение отображения ошибок (если это разрешено и используется mod_php)
+php_flag display_startup_errors off
+php_flag display_errors off
+php_flag html_errors off
+
+Options +FollowSymLinks
+RewriteEngine On
+
+# Игнорировать запросы к папке "files" (папка "files" не будет обработана через этот .htaccess)
+RewriteCond %{REQUEST_URI} !^/files [NC]
+
+# Перенаправить все запросы, кроме /index.php, на /index.php
+RewriteCond %{REQUEST_URI} !^/index.php
+RewriteRule ^(.*)$ /index.php [L]

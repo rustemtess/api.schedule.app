@@ -1,0 +1,6 @@
+{
+    "host": "localhost",
+    "login": "rustem",
+    "password": "password!",
+    "dbName": "schedule_system"
+}
