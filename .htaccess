@@ -7,8 +7,8 @@ Options +FollowSymLinks
 RewriteEngine On
 
 # Игнорировать запросы к папке "files" (папка "files" не будет обработана через этот .htaccess)
-RewriteCond %{REQUEST_URI} !^/files [NC]
+RewriteCond %{REQUEST_URI} !^/api/files [NC]
 
 # Перенаправить все запросы, кроме /index.php, на /index.php
-RewriteCond %{REQUEST_URI} !^/index.php
-RewriteRule ^(.*)$ /index.php [L]
+RewriteCond %{REQUEST_URI} !^/api/index.php
+RewriteRule ^(.*)$ /api/index.php [L]
