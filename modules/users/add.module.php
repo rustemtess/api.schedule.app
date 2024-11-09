@@ -57,7 +57,7 @@ function register(array $data): void {
 
     // Проверка существования номера
     if (isExistsNumber($number)) 
-        throw new Exception('Телефон номер уже зарегистрирован');
+        throw new Exception('Телефон номер уже зарегистрирован ');
 
     // Хеширование пароля с использованием password_hash
     $passwordWithoutHash = $data['password'];

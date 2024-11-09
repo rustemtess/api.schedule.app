@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost:3306
--- Время создания: Ноя 08 2024 г., 19:21
+-- Время создания: Ноя 09 2024 г., 20:20
 -- Версия сервера: 10.6.18-MariaDB-0ubuntu0.22.04.1
 -- Версия PHP: 8.1.2-1ubuntu2.19
 
@@ -31,6 +31,19 @@ CREATE TABLE `colors` (
   `color_id` bigint(20) NOT NULL,
   `color_rgb` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Дамп данных таблицы `colors`
+--
+
+INSERT INTO `colors` (`color_id`, `color_rgb`) VALUES
+(1, '29,29,29'),
+(2, '12,166,120'),
+(3, '240,73,57'),
+(4, '51,71,255'),
+(5, '247,103,7');
+
+-- --------------------------------------------------------
 
 --
 -- Структура таблицы `date`
@@ -79,6 +92,18 @@ CREATE TABLE `permissions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Дамп данных таблицы `permissions`
+--
+
+INSERT INTO `permissions` (`permission_id`, `permission_name`) VALUES
+(1, 'Пользователь'),
+(2, 'Редактор'),
+(3, 'Администратор'),
+(4, 'Супер-Администратор');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `schedule_user_notifications`
 --
 
@@ -100,6 +125,27 @@ CREATE TABLE `time` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Дамп данных таблицы `time`
+--
+
+INSERT INTO `time` (`time_id`, `time_hours`) VALUES
+(1, '8:00'),
+(2, '9:00'),
+(3, '10:00'),
+(4, '11:00'),
+(5, '12:00'),
+(6, '13:00'),
+(7, '14:00'),
+(8, '15:00'),
+(9, '16:00'),
+(10, '17:00'),
+(11, '18:00'),
+(12, '19:00'),
+(13, '20:00');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `users`
 --
 
@@ -116,6 +162,13 @@ CREATE TABLE `users` (
   `user_registered` timestamp NULL DEFAULT current_timestamp(),
   `user_admin_id` bigint(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Дамп данных таблицы `users`
+--
+
+INSERT INTO `users` (`user_id`, `user_name`, `user_surname`, `user_middlename`, `user_number`, `user_email`, `user_password`, `permission_id`, `user_access_token`, `user_registered`, `user_admin_id`) VALUES
+(2, 'Admin', 'Admin', 'Admin', 77000000000, 'admin@example.com', '468f5077dfa51ac178c1aab6c4935bd2bd8844bc780afb1958c218e39ed2d971', 4, 'bf15e1384e544b9b6e4e628e79d769b8', '2024-05-19 18:50:06', NULL);
 
 --
 -- Индексы сохранённых таблиц

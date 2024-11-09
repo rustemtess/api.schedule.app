@@ -101,7 +101,7 @@ function getOrSearchDateTimeList(?string $text = ''): array {
                     meet_data.meet_data_time, 
                     meet_data.meet_data_file, 
                     colors.color_rgb, 
-                    meet_data.meet_data_id
+                    meet_data.meet_data_id 
                   FROM `time`
                   LEFT JOIN `meeting` ON time.time_id = meeting.time_id
                   LEFT JOIN `date` ON meeting.date_id = date.date_id
@@ -112,13 +112,9 @@ function getOrSearchDateTimeList(?string $text = ''): array {
     // Добавление условий для поиска
     if ($text !== '') {
         $text = '%' . mysqli_real_escape_string($db, $text) . '%';
-        // Условие для отбора только тех записей, где дата не старше месяца
-        $baseQuery .= " WHERE meet_data.meet_data_text LIKE ? 
-                        AND (meet_data.user_id IS NULL OR users.user_id IS NOT NULL)
-                        AND date.date_ymd >= CURDATE() - INTERVAL 1 MONTH";
+        $baseQuery .= " WHERE meet_data.meet_data_text LIKE ? AND (meet_data.user_id IS NULL OR users.user_id IS NOT NULL)";
     } else {
-        $baseQuery .= " WHERE (meet_data.user_id IS NULL OR users.user_id IS NOT NULL)
-                        AND date.date_ymd >= CURDATE() - INTERVAL 1 MONTH";
+        $baseQuery .= " WHERE meet_data.user_id IS NULL OR users.user_id IS NOT NULL";
     }
 
     // Добавление сортировки
@@ -189,6 +185,7 @@ function getOrSearchDateTimeList(?string $text = ''): array {
 
     return array_values($dateTimeList);
 }
+
 
 
 
