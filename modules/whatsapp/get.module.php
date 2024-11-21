@@ -81,7 +81,7 @@ function getMeetNext50Min(): array {
         SET meet_data_notified = 1
         WHERE date.date_ymd = '$currentDay' 
           AND meet_data.meet_data_notified = 0 
-          AND meet_data.meet_data_time BETWEEN '$currentHM' AND ADDTIME('$currentHM', '00:30:00')
+          AND meet_data.meet_data_time BETWEEN '$currentHM' AND ADDTIME('$currentHM', '00:51:00')
     ";
 
     // Выполняем запрос на обновление
