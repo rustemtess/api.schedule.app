@@ -16,9 +16,12 @@ function post($arr): void
 
     // Инициализация cURL
     $ch = curl_init($url);
+    // Настройка параметров cURL
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false); // Отключаем проверку хоста
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // Отключаем проверку сертификата
 
     // Выполнение запроса и получение ответа
     $response = curl_exec($ch);
